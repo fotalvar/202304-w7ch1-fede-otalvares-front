@@ -1,5 +1,25 @@
+import { useEffect } from "react";
+import useApi from "../../hooks/useApi";
+import { useAppDispatch } from "../../store";
+import { loadRobotsActionCreator } from "../../store/robotsSlice/robotsSlice";
+import RobotsList from "../RobotsList/RobotsList";
+
 const App = (): JSX.Element => {
-  return <h1>Robots</h1>>;
+  const { getRobots } = useApi();
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    (async () => {
+      const robots = await getRobots();
+      dispatch(loadRobotsActionCreator(robots));
+    })();
+  }, [dispatch, getRobots]);
+
+  return (
+    <>
+      <h1 className="title">Robots</h1>
+      <RobotsList />
+    </>
+  );
 };
 
 export default App;
