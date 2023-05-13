@@ -10,7 +10,9 @@ const apiURL = import.meta.env.VITE_API_URL;
 
 const useApi = (): UseApiStructure => {
   const getRobots = useCallback(async () => {
-    const { data: robots } = await axios.get(`${apiURL}/robots`);
+    const {
+      data: { robots },
+    } = await axios.get(`${apiURL}/robots`);
     return robots;
   }, []);
 
