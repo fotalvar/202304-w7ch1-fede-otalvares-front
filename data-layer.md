@@ -5,7 +5,7 @@
 ### Data
 
 - Collection of Robots
-  - _id -> string
+  - \_id -> string
   - name -> string
   - image-url -> string
   - velocity -> number (0-10)
