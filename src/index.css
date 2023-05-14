@@ -54,6 +54,7 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  min-width: 320px;
 }
 
 .robots__list {
@@ -100,4 +101,5 @@ ul {
 .robot__name {
   font-size: 22px;
   font-weight: 700;
+  color: #4a4a5b;
 }
