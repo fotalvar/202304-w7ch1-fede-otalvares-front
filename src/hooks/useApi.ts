@@ -1,20 +1,22 @@
 import { useCallback } from "react";
-import { RobotsStructure } from "../store/robotsSlice/types";
 import axios from "axios";
 
-interface UseApiStructure {
-  getRobots: () => Promise<RobotsStructure[]>;
-}
+export const apiURL = import.meta.env.VITE_API_URL;
 
-const apiURL = import.meta.env.VITE_API_URL;
-
-const useApi = (): UseApiStructure => {
+const useApi = () => {
   const getRobots = useCallback(async () => {
-    const { data: robots } = await axios.get(`${apiURL}/robots`);
+    const {
+      data: { robots },
+    } = await axios.get(`${apiURL}/robots`);
     return robots;
   }, []);
 
-  return { getRobots };
+  const getRobot = async (robotId: string) => {
+    const { data, status } = await axios.get(`${apiURL}/robots/${robotId}`);
+    return { data, status };
+  };
+
+  return { getRobots, getRobot };
 };
 
 export default useApi;

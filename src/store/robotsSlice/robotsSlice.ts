@@ -1,18 +1,35 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RobotsStructure } from "./types";
+import RobotStructure from "./types";
 
-const robotsState: RobotsStructure[] = [];
+export interface RobotState {
+  robotsData: RobotStructure[];
+}
 
-const robotsSlice = createSlice({
+const robotsInitialState: RobotState = {
+  robotsData: [],
+};
+
+export const robotsSlice = createSlice({
   name: "robots",
-  initialState: robotsState,
+  initialState: robotsInitialState,
   reducers: {
-    loadRobots: (_currentRobots, action: PayloadAction<RobotsStructure[]>) => [
-      ...action.payload,
-    ],
+    loadRobots: (
+      currentRobots,
+      action: PayloadAction<RobotStructure[]>
+    ): RobotState => ({
+      ...currentRobots,
+      robotsData: [...action.payload],
+    }),
+    getRobot: (currentRobots, action: PayloadAction<string>): RobotState => ({
+      ...currentRobots,
+      robotsData: currentRobots.robotsData.filter(
+        (robot) => robot._id === action.payload
+      ),
+    }),
   },
 });
 
 export const { loadRobots: loadRobotsActionCreator } = robotsSlice.actions;
+export const { getRobot: getRobotActionCreator } = robotsSlice.actions;
 
 export const robotsReducer = robotsSlice.reducer;

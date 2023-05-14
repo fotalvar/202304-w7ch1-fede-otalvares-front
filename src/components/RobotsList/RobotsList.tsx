@@ -1,22 +1,11 @@
-import { useEffect } from "react";
-import useApi from "../../hooks/useApi";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { loadRobotsActionCreator } from "../../store/robotsSlice/robotsSlice";
+import RobotStructure from "../../store/robotsSlice/types";
 
-const RobotsList = () => {
-  const { getRobots } = useApi();
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    async () => {
-      const robots = await getRobots();
-      dispatch(loadRobotsActionCreator(robots));
-    };
-  }, [dispatch, getRobots]);
+interface RobotsListProps {
+  robots: RobotStructure[];
+  id?: string | undefined;
+}
 
-  const robots = useAppSelector((state) => {
-    return state.robots;
-  });
-
+const RobotsList = ({ robots }: RobotsListProps): JSX.Element => {
   return (
     <>
       <ul className="robots">
