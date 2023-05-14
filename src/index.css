@@ -13,7 +13,7 @@ h5,
 h6,
 p {
   margin: 0;
-  font-family: "Rubik", sans-serif;
+  font-family: "Merriweather", sans-serif;
 }
 
 a {
@@ -101,7 +101,7 @@ body {
   display: flex;
   height: 100%;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .robot__name {
