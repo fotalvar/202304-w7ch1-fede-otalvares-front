@@ -16,7 +16,9 @@ const App = (): JSX.Element => {
 
   return (
     <>
-      <h1 className="title">Robots</h1>
+      <header className="header">
+        <img className="logo" src="/logo.svg" alt="Bits and chips logo" />
+      </header>
       <RobotsList />
     </>
   );

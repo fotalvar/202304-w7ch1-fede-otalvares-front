@@ -31,3 +31,73 @@ ul {
   padding-left: 0;
   margin: 0;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  width: 320px;
+  height: 100px;
+  background: linear-gradient(180deg, #6183e7 0%, #7199ec 100%);
+  box-shadow: 0px 2px 0px #6181de;
+  border-radius: 0px 0px 20px 20px;
+  margin: 0 auto;
+}
+
+.robots {
+  display: flex;
+  padding: 30px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.robots__list {
+  position: relative;
+  width: 280px;
+  height: 150px;
+  background: #f8faff;
+  box-shadow: 0px 10px 15px -3px #0000001a;
+  border-radius: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  width: 90px;
+}
+
+.robot__image {
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #e5b863;
+}
+
+.robot__delete {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 48px;
+  background-color: #ededed;
+  border-radius: 0px 20px;
+  border: none;
+  color: #bbbbbb;
+  cursor: pointer;
+}
+
+.robot__card {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 15px;
+}
+
+.robot__name {
+  font-size: 22px;
+}
