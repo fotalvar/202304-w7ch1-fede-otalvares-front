@@ -13,7 +13,7 @@ h5,
 h6,
 p {
   margin: 0;
-  font-family: "Rubik", sans-serif;
+  font-family: "Merriweather", sans-serif;
 }
 
 a {
@@ -31,10 +31,19 @@ ul {
   margin: 0;
 }
 
+body {
+  background-color: #eeeeee;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+}
+
+.logo {
+  max-width: 100%;
+  width: 90px;
 }
 
 .header {
@@ -66,16 +75,12 @@ ul {
   border-radius: 20px;
 }
 
-.logo {
-  max-width: 100%;
-  width: 90px;
-}
-
 .robot__image {
-  width: 135px;
-  height: 135px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
+  margin-left: 15px;
   background-color: #e5b863;
 }
 
@@ -84,10 +89,11 @@ ul {
   right: 0;
   width: 60px;
   height: 48px;
-  background-color: #ededed;
+  background-color: #e5b863;
   border-radius: 0px 20px;
   border: none;
-  color: #bbbbbb;
+  color: #ffffff;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -95,7 +101,7 @@ ul {
   display: flex;
   height: 100%;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .robot__name {
