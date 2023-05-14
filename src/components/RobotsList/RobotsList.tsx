@@ -8,11 +8,18 @@ interface RobotsListProps {
 const RobotsList = ({ robots }: RobotsListProps): JSX.Element => {
   return (
     <>
-      <h2 className="robots__subtitle">Robots</h2>
-      <ul className="robots__list">
+      <ul className="robots">
         {robots.map((robot) => (
-          <li className="robots__robot" key={robot._id}>
-            <p>{robot.name}</p>
+          <li className="robots__list" key={robot._id}>
+            <button className="robot__delete">✖</button>
+            <article className="robot__card">
+              <img
+                className="robot__image"
+                src={robot.image}
+                alt={`${robot.name}`}
+              />
+              <span className="robot__name">{robot.name}</span>
+            </article>
           </li>
         ))}
       </ul>
