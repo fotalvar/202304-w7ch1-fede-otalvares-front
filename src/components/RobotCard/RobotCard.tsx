@@ -10,7 +10,7 @@ const RobotCard = ({ robot }: RobotCardProps): JSX.Element => {
       <button className="robot__delete">✖</button>
       <article className="robot__card">
         <img className="robot__image" src={robot.image} alt={`${robot.name}`} />
-        <span className="robot__name">{robot.name}</span>
+        <h2 className="robot__name">{robot.name}</h2>
       </article>
     </>
   );
