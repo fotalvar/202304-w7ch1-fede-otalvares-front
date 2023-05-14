@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { loadRobotsActionCreator } from "../../store/robotsSlice/robotsSlice";
 import RobotsList from "../RobotsList/RobotsList";
+import RobotDetails from "../RobotDetails/RobotDetails";
 
 const App = (): JSX.Element => {
   const { getRobots } = useApi();
@@ -21,7 +23,12 @@ const App = (): JSX.Element => {
       <header className="header">
         <img className="logo" src="/logo.svg" alt="Bits and chips logo" />
       </header>
-      <RobotsList robots={robots} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<RobotsList robots={robots} />} />
+          <Route path="/:idRobot" element={<RobotDetails />} />
+        </Routes>
+      </Router>
     </>
   );
 };

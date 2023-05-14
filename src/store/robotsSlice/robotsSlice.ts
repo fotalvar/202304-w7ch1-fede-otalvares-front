@@ -12,6 +12,7 @@ const robotsInitialState: RobotState = {
 export const robotsSlice = createSlice({
   name: "robots",
   initialState: robotsInitialState,
+
   reducers: {
     loadRobots: (
       currentRobots,
