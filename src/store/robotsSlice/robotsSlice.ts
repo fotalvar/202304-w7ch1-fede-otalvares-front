@@ -1,12 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import RobotStructure from "./types";
 
-export interface RobotState {
+export interface RobotsState {
   robotsData: RobotStructure[];
+  robotData: RobotStructure | undefined;
 }
 
-const robotsInitialState: RobotState = {
+const robotsInitialState: RobotsState = {
   robotsData: [],
+  robotData: undefined,
 };
 
 export const robotsSlice = createSlice({
@@ -17,13 +19,16 @@ export const robotsSlice = createSlice({
     loadRobots: (
       currentRobots,
       action: PayloadAction<RobotStructure[]>
-    ): RobotState => ({
+    ): RobotsState => ({
       ...currentRobots,
       robotsData: [...action.payload],
     }),
-    getRobot: (currentRobots, action: PayloadAction<string>): RobotState => ({
+    getRobotById: (
+      currentRobots,
+      action: PayloadAction<string>
+    ): RobotsState => ({
       ...currentRobots,
-      robotsData: currentRobots.robotsData.filter(
+      robotData: currentRobots.robotsData.find(
         (robot) => robot._id === action.payload
       ),
     }),
@@ -31,6 +36,6 @@ export const robotsSlice = createSlice({
 });
 
 export const { loadRobots: loadRobotsActionCreator } = robotsSlice.actions;
-export const { getRobot: getRobotActionCreator } = robotsSlice.actions;
+export const { getRobotById: getRobotByIdActionCreator } = robotsSlice.actions;
 
 export const robotsReducer = robotsSlice.reducer;
