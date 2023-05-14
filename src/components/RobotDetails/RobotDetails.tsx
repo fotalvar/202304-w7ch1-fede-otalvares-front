@@ -1,15 +1,32 @@
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { useEffect } from "react";
+import { getRobotActionCreator } from "../../store/robotsSlice/robotsSlice";
+import useApi from "../../hooks/useApi";
 
 const RobotDetails = (): JSX.Element => {
-  const robots = useAppSelector((state) => state.robots.robotsData);
+  const { getRobot } = useApi();
+  const dispatch = useAppDispatch();
   const { robotId } = useParams();
 
-  const robot = robots.find((robot) => robot._id === robotId);
+  useEffect(() => {
+    (async () => {
+      if (!robotId) {
+        return <span>Robot not Found</span>;
+      }
+      const robot = await getRobot(robotId);
+      dispatch(getRobotActionCreator(robot.data));
+    })();
+  }, [dispatch, getRobot, robotId]);
+
+  const robot = useAppSelector((state) =>
+    state.robots.robotsData.find((robot) => robot._id === robotId)
+  );
 
   if (!robot) {
-    return <span>Robot not found</span>;
+    return <span>Robot not found meow</span>;
   }
+
   return (
     <>
       <button className="robot__delete">✖</button>
