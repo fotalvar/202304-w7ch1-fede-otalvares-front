@@ -1,4 +1,4 @@
-export interface RobotsStructure {
+interface RobotStructure {
   _id: string;
   name: string;
   image: string;
@@ -6,3 +6,5 @@ export interface RobotsStructure {
   resilience: number;
   creationDate: string;
 }
+
+export default RobotStructure;
