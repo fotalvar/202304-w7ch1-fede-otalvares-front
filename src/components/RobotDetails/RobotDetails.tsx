@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getRobotByIdActionCreator } from "../../store/robotsSlice/robotsSlice";
 import useApi from "../../hooks/useApi";
 
@@ -10,22 +10,25 @@ const RobotDetails = (): JSX.Element => {
   const { idRobot } = params;
   const { getRobot } = useApi();
 
-  useEffect(() => {
-    const getRobotOnce = async () => {
-      (async () => {
-        const response = await getRobot(idRobot);
-        const data = response.data as unknown as string;
-        dispatch(getRobotByIdActionCreator(data));
-      })();
-    };
-    if (idRobot) {
-      getRobotOnce();
-    }
-  }, [dispatch, getRobot, idRobot, params.idRobot]);
+  const [isRobotFetched, setIsRobotFetched] = useState(false);
 
   const robot = useAppSelector((state) => state.robots.robotData);
 
-  if (!robot) {
+  useEffect(() => {
+    if (idRobot && !isRobotFetched) {
+      const getRobotOnce = async () => {
+        async () => {
+          const response = await getRobot(idRobot);
+          const data = response.data as unknown as string;
+          dispatch(getRobotByIdActionCreator(data));
+          setIsRobotFetched(true);
+        };
+      };
+      getRobotOnce();
+    }
+  }, [dispatch, getRobot, idRobot, isRobotFetched, params.idRobot]);
+
+  if (!robot || !isRobotFetched) {
     return <span>Robot not found</span>;
   }
 
