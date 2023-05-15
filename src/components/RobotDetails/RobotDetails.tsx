@@ -48,11 +48,11 @@ const RobotDetails = (): JSX.Element => {
               </article>
             </>
           ) : (
-            <span>Robot not found</span>
+            <span className="robot__message">Robot not found</span>
           )}
         </>
       )}
-      {isRobotLoading && <span>Loading...</span>}
+      {isRobotLoading && <span className="robot__message">Loading...</span>}
     </>
   );
 };

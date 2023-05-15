@@ -109,3 +109,9 @@ body {
   font-weight: 700;
   color: #4a4a5b;
 }
+
+.robot__message {
+  margin: 0 auto;
+  color: #6181de;
+  padding: 30px;
+}
