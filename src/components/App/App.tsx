@@ -21,7 +21,13 @@ const App = (): JSX.Element => {
   return (
     <>
       <header className="header">
-        <img className="logo" src="/logo.svg" alt="Bits and chips logo" />
+        <img
+          className="logo"
+          src="/logo.svg"
+          alt="Bits and chips logo"
+          width="90"
+          height="100"
+        />
       </header>
       <Router>
         <Routes>
