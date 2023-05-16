@@ -1,17 +1,22 @@
 import { useState } from "react";
+import useUser from "../../hooks/useUser";
 
 const LoginForm = (): JSX.Element => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-  };
+  const { getUserToken } = useUser();
 
   const onChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({
       ...loginData,
       [event.target.id]: event.target.value,
     });
+  };
+
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
+    await getUserToken(loginData);
   };
 
   return (
