@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { loadRobotsActionCreator } from "../../store/robotsSlice/robotsSlice";
 import RobotsList from "../RobotsList/RobotsList";
 import RobotDetails from "../RobotDetails/RobotDetails";
+import LoginForm from "../Form/Form";
 
 const App = (): JSX.Element => {
   const { getRobots } = useApi();
@@ -29,6 +30,7 @@ const App = (): JSX.Element => {
           height="100"
         />
       </header>
+      <LoginForm />
       <Router>
         <Routes>
           <Route path="/" element={<RobotsList robots={robots} />} />
